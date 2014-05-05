@@ -1,0 +1,9 @@
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+
+*.py[cod]
+*.out
+*.sublime-workspace
+*.egg-info/
