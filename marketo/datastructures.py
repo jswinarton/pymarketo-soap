@@ -79,9 +79,9 @@ class MarketoLeadKey(MarketoKeyBase):
     _mkto_type = 'LeadKey'
 
     REFERENCES = (
-        ('email', 'EMAIL'),
         ('cookie', 'COOKIE'),
-        ('id', 'IDNUM'),
+        ('Email', 'EMAIL'),
+        ('Id', 'IDNUM'),
     )
 
     def _to_soap(self):
@@ -104,9 +104,6 @@ class MarketoLeadKey(MarketoKeyBase):
 
 class MarketoLeadKeyList(MarketoListBase):
     _mkto_type = 'ArrayOfLeadKey'
-
-    def _validate():
-        print 'ha'
 
     def __setitem__(self, key, value):
         if not isinstance(value, MarketoLeadKey):
@@ -162,8 +159,8 @@ class MarketoLead(MarketoDictBase):
 
     def _to_soap(self):
         obj = self._soap_obj
-        obj.Id = self.get('id')
-        obj.Email = self.get('email')
+        obj.Id = self.get('Id')
+        obj.Email = self.get('Email')
         attr_set = {key: value for key, value in self.iteritems() if key not in self.MAGIC_KEYS}
         obj.leadAttributeList = MarketoAttributeSet(**attr_set)._to_soap()
         return obj
@@ -171,8 +168,8 @@ class MarketoLead(MarketoDictBase):
     def _from_soap(self, obj):
         super(MarketoLead, self)._from_soap(obj)
 
-        self['id'] = obj.Id
-        self['email'] = obj.Email
+        self['Id'] = obj.Id
+        self['Email'] = obj.Email
         self.update(
             MarketoAttributeSet()._from_soap(obj.leadAttributeList)
         )
