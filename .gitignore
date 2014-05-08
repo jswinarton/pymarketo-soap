@@ -7,3 +7,4 @@
 *.out
 *.sublime-workspace
 *.egg-info/
+dist/
