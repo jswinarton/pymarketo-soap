@@ -79,10 +79,10 @@ class MarketoLeadKey(MarketoKeyBase):
     _mkto_type = 'LeadKey'
 
     REFERENCES = (
-        ('cookie', 'COOKIE'),
         ('Email', 'EMAIL'),
+        ('cookie', 'COOKIE'),
         ('Id', 'IDNUM'),
-    )
+    ) # Order matters to generate_from_lead
 
     def _to_soap(self):
         obj = self._soap_obj
